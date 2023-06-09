@@ -1,5 +1,5 @@
 {
-  "name": "vite-charts",
+  "name": "data-to-chart",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -17,10 +17,10 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.4",
+    "@vitejs/plugin-vue": "^4.2.3",
     "naive-ui": "^2.34.4",
-    "unplugin-vue-components": "^0.21.2",
-    "vite": "^2.9.16",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.3.9",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }
