@@ -1,0 +1,16 @@
+{
+  "name": "vite-charts",
+  "uuid": "8ec66865-9a3e-4e01-9b30-7c8a654e3c3c",
+  "icon": "charts.png",
+  "debug": {
+    "entry": "http://localhost:3000",
+    "resource": "public"
+  },
+  "build": {
+    "resource": "dist"
+  },
+  "window": {
+    "icon": "charts.png",
+    "minSize": { "width": 1280, "height": 820 }
+  }
+}
