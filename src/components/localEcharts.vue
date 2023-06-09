@@ -35,6 +35,9 @@ const option = {
       restore: {}, // 重置
     },
   }, // 工具栏
+  textStyle: {
+    fontFamily: 'Arial',
+  },
 };
 // 横坐标
 const xName = {
@@ -57,10 +60,19 @@ const yName = {
 };
 let type = 'category';
 if (prop.series[0].type == 'scatter') type = 'value';
-option['xAxis'] = { type, scale: true, splitLine: false, ...xName, interval: prop.xInterval };
+option['xAxis'] = {
+  type,
+  scale: true,
+  splitLine: false,
+  ...xName,
+  axisLine: { lineStyle: { width: 5 } },
+  axisTick: { lineStyle: { width: 5 } },
+  axisLabel: { fontSize: 24 },
+  interval: prop.xInterval,
+};
 if (prop.xMin) option.xAxis.min = prop.xMin;
 if (prop.xMax) option.xAxis.max = prop.xMax;
-option['yAxis'] = { type: 'value', scale: true, splitLine: false, ...yName };
+option['yAxis'] = { type: 'value', scale: true, splitLine: false, ...yName, axisLine: { lineStyle: { width: 5 } }, axisTick: { lineStyle: { width: 5 } }, axisLabel: { fontSize: 24 } };
 if (prop.yMin) option.yAxis.min = prop.yMin;
 if (prop.yMax) option.yAxis.max = prop.yMax;
 // 数据集
@@ -73,6 +85,20 @@ if (prop.visualMap) {
 if (prop.formatter) {
   option.tooltip.formatter = prop.formatter;
 }
+option['title'] = [
+  {
+    text: 'Relative Abundance(%)',
+    left: '72%',
+    top: '12%',
+    textStyle: { fontSize: 16 },
+  },
+  {
+    text: '32156',
+    left: '16%',
+    top: '8%',
+    textStyle: { fontSize: 32 },
+  },
+];
 
 // 绘制图表
 onMounted(() => {

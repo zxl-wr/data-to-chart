@@ -27,10 +27,6 @@
     <n-input-group-label>X步长</n-input-group-label>
     <n-input-number v-model:value="xInterval" />
   </n-input-group>
-  <n-input-group>
-    <n-input-group-label>颜色</n-input-group-label>
-    <n-color-picker v-model:value="themeColor" :show-alpha="false" />
-  </n-input-group>
   <local-echarts :key="timer" :data="arr" :series="series" :visualMap="visualMap" :formatter="formatter" :yName="yName"
     :xName="xName" :xMin="xMin" :xMax="xMax" :yMin="yMin" :yMax="yMax" :xInterval="xInterval"></local-echarts>
 </template>
@@ -80,19 +76,20 @@ const formatter = (param) => {
   return '(' + param.value[0] + ',' + param.value[1] + ') = ' + param.value[2];
 };
 const visualMap = ref({});
-const themeColor = ref('#18a058');
 const chartStyle = () => {
-  visualMap.value = {
-    left: 'right',
-    top: '10%',
+  visualMap.value = [{
+    left: '72%',
+    top: '8%',
     min: min,
     max: max,
+    text: [100, 0],
     inRange: {
-      symbolSize: [2, 20],
-      color: [themeColor.value],
-      colorLightness: [1, 0.3],
+      // color: [['#ffffff', '#000000', '#ff00ff', '#0000ff', '#00ff00', '#ffff00', '#ff7b00', '#ff0000']],
+      color: ['#ffffff', '#0b0b0b', '#5D3FD3', '#0000CD', '#6495E1', '#98ff98', '#39ff14', '#195905', '#FFFF00', '#f07427', '#D2042D',],
     },
-  };
+    orient: 'horizontal',
+  },
+  ];
 };
 chartStyle();
 
@@ -104,7 +101,7 @@ const yMin = ref(0); // 横坐标最小值
 const yMax = ref(0); // 横坐标最大值
 const xInterval = ref(10); // 横坐标步长
 watch(
-  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval, themeColor],
+  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval],
   () => {
     chartStyle();
     timer.value = new Date().getTime();
