@@ -1,11 +1,17 @@
 <template>
   <n-input-group>
     <n-input-group-label>X名称</n-input-group-label>
-    <n-input v-model:value="xName" type="text" placeholder="自定义横坐标名" />
+    <n-input
+      v-model:value="xName"
+      type="text"
+      placeholder="自定义横坐标名" />
   </n-input-group>
   <n-input-group>
     <n-input-group-label>Y名称</n-input-group-label>
-    <n-input v-model:value="yName" type="text" placeholder="自定义纵坐标名" />
+    <n-input
+      v-model:value="yName"
+      type="text"
+      placeholder="自定义纵坐标名" />
   </n-input-group>
   <n-input-group>
     <n-input-group-label>X最小值</n-input-group-label>
@@ -27,8 +33,27 @@
     <n-input-group-label>X步长</n-input-group-label>
     <n-input-number v-model:value="xInterval" />
   </n-input-group>
-  <local-echarts :key="timer" :data="arr" :series="series" :visualMap="visualMap" :formatter="formatter" :yName="yName"
-    :xName="xName" :xMin="xMin" :xMax="xMax" :yMin="yMin" :yMax="yMax" :xInterval="xInterval"></local-echarts>
+  <n-input-group>
+    <n-input-group-label>标题</n-input-group-label>
+    <n-input
+      v-model:value="title"
+      type="text"
+      placeholder="标题" />
+  </n-input-group>
+  <local-echarts
+    :key="timer"
+    :data="arr"
+    :series="series"
+    :visualMap="visualMap"
+    :formatter="formatter"
+    :yName="yName"
+    :xName="xName"
+    :xMin="xMin"
+    :xMax="xMax"
+    :yMin="yMin"
+    :yMax="yMax"
+    :xInterval="xInterval"
+    :title="title"></local-echarts>
 </template>
 
 <script setup>
@@ -77,18 +102,19 @@ const formatter = (param) => {
 };
 const visualMap = ref({});
 const chartStyle = () => {
-  visualMap.value = [{
-    left: '72%',
-    top: '8%',
-    min: min,
-    max: max,
-    text: [100, 0],
-    inRange: {
-      // color: [['#ffffff', '#000000', '#ff00ff', '#0000ff', '#00ff00', '#ffff00', '#ff7b00', '#ff0000']],
-      color: ['#ffffff', '#0b0b0b', '#5D3FD3', '#0000CD', '#6495E1', '#98ff98', '#39ff14', '#195905', '#FFFF00', '#f07427', '#D2042D',],
+  visualMap.value = [
+    {
+      left: '72%',
+      top: '8%',
+      min: min,
+      max: max,
+      text: [100, 0],
+      inRange: {
+        // color: [['#ffffff', '#000000', '#ff00ff', '#0000ff', '#00ff00', '#ffff00', '#ff7b00', '#ff0000']],
+        color: ['#ffffff', '#0b0b0b', '#5D3FD3', '#0000CD', '#6495E1', '#98ff98', '#39ff14', '#195905', '#FFFF00', '#f07427', '#D2042D'],
+      },
+      orient: 'horizontal',
     },
-    orient: 'horizontal',
-  },
   ];
 };
 chartStyle();
@@ -100,8 +126,9 @@ const xMax = ref(0); // 横坐标最大值
 const yMin = ref(0); // 横坐标最小值
 const yMax = ref(0); // 横坐标最大值
 const xInterval = ref(10); // 横坐标步长
+const title = ref(''); // 标题
 watch(
-  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval],
+  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval, title],
   () => {
     chartStyle();
     timer.value = new Date().getTime();

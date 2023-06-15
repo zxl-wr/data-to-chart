@@ -1,6 +1,8 @@
 <template>
   <div class="box">
-    <div ref="main" class="main"></div>
+    <div
+      ref="main"
+      class="main"></div>
   </div>
 </template>
 
@@ -20,6 +22,7 @@ const prop = defineProps({
   yMin: Number,
   yMax: Number,
   xInterval: Number,
+  title: String,
 });
 
 // 基础组件
@@ -72,7 +75,15 @@ option['xAxis'] = {
 };
 if (prop.xMin) option.xAxis.min = prop.xMin;
 if (prop.xMax) option.xAxis.max = prop.xMax;
-option['yAxis'] = { type: 'value', scale: true, splitLine: false, ...yName, axisLine: { lineStyle: { width: 5 } }, axisTick: { lineStyle: { width: 5 } }, axisLabel: { fontSize: 24 } };
+option['yAxis'] = {
+  type: 'value',
+  scale: true,
+  splitLine: false,
+  ...yName,
+  axisLine: { lineStyle: { width: 5 } },
+  axisTick: { lineStyle: { width: 5 } },
+  axisLabel: { fontSize: 24 },
+};
 if (prop.yMin) option.yAxis.min = prop.yMin;
 if (prop.yMax) option.yAxis.max = prop.yMax;
 // 数据集
@@ -90,11 +101,21 @@ option['title'] = [
     text: 'Relative Abundance(%)',
     left: '72%',
     top: '12%',
-    textStyle: { fontSize: 16 },
+    textStyle: {
+      fontSize: 16,
+      rich: {
+        p: {
+          backgroundColor: { image: '@/assets/icons/Bar.svg' }, //在这里填写背景图片路径
+          //设置图片宽高
+          height: 14,
+          width: 15,
+        },
+      },
+    },
   },
   {
-    text: '32156',
-    left: '16%',
+    text: prop.title,
+    left: '10%',
     top: '8%',
     textStyle: { fontSize: 32 },
   },
