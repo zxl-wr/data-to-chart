@@ -22,6 +22,7 @@ const prop = defineProps({
   yMin: Number,
   yMax: Number,
   xInterval: Number,
+  yInterval: Number,
   title: String,
 });
 
@@ -68,7 +69,7 @@ option['xAxis'] = {
   scale: true,
   splitLine: false,
   ...xName,
-  axisLine: { lineStyle: { width: 5 } },
+  axisLine: { lineStyle: { width: 5, color: '#000' } },
   axisTick: { lineStyle: { width: 5 } },
   axisLabel: { fontSize: 24 },
   interval: prop.xInterval,
@@ -80,9 +81,10 @@ option['yAxis'] = {
   scale: true,
   splitLine: false,
   ...yName,
-  axisLine: { lineStyle: { width: 5 } },
+  axisLine: { lineStyle: { width: 5, color: '#000' } },
   axisTick: { lineStyle: { width: 5 } },
   axisLabel: { fontSize: 24 },
+  interval: prop.yInterval,
 };
 if (prop.yMin) option.yAxis.min = prop.yMin;
 if (prop.yMax) option.yAxis.max = prop.yMax;
@@ -101,17 +103,7 @@ option['title'] = [
     text: 'Relative Abundance(%)',
     left: '72%',
     top: '12%',
-    textStyle: {
-      fontSize: 16,
-      rich: {
-        p: {
-          backgroundColor: { image: '@/assets/icons/Bar.svg' }, //在这里填写背景图片路径
-          //设置图片宽高
-          height: 14,
-          width: 15,
-        },
-      },
-    },
+    textStyle: { fontSize: 16 },
   },
   {
     text: prop.title,

@@ -34,6 +34,10 @@
     <n-input-number v-model:value="xInterval" />
   </n-input-group>
   <n-input-group>
+    <n-input-group-label>Y步长</n-input-group-label>
+    <n-input-number v-model:value="yInterval" />
+  </n-input-group>
+  <n-input-group>
     <n-input-group-label>标题</n-input-group-label>
     <n-input
       v-model:value="title"
@@ -53,6 +57,7 @@
     :yMin="yMin"
     :yMax="yMax"
     :xInterval="xInterval"
+    :yInterval="yInterval"
     :title="title"></local-echarts>
 </template>
 
@@ -126,9 +131,10 @@ const xMax = ref(0); // 横坐标最大值
 const yMin = ref(0); // 横坐标最小值
 const yMax = ref(0); // 横坐标最大值
 const xInterval = ref(10); // 横坐标步长
+const yInterval = ref(10); // 纵坐标步长
 const title = ref(''); // 标题
 watch(
-  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval, title],
+  () => [xName, yName, xMin, xMax, yMin, yMax, xInterval,yInterval, title],
   () => {
     chartStyle();
     timer.value = new Date().getTime();
