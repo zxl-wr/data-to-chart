@@ -39,9 +39,7 @@ const option = {
       restore: {}, // 重置
     },
   }, // 工具栏
-  textStyle: {
-    fontFamily: 'Arial',
-  },
+  textStyle: { fontFamily: 'Arial', color: '#000', fontWeight: 'normal' },
 };
 // 横坐标
 const xName = {
@@ -103,13 +101,13 @@ option['title'] = [
     text: 'Relative Abundance(%)',
     left: '72%',
     top: '12%',
-    textStyle: { fontSize: 16 },
+    textStyle: { fontSize: 16, color: '#000' },
   },
   {
     text: prop.title,
     left: '10%',
     top: '8%',
-    textStyle: { fontSize: 32 },
+    textStyle: { fontSize: 32, fontWeight: 'normal', color: '#000' },
   },
 ];
 
