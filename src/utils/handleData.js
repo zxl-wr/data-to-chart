@@ -20,9 +20,7 @@ export const objArrTo2dArr = (objArr) => {
 export const ArrKeepDecimal = (arr, m) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
-      if (i == 0) {
-        arr[i][j] = arr[i][j].toString(); // 第一行全部为字符串，以防被识别为数据
-      }
+      if (i == 0 || j == 0) arr[i][j] = arr[i][j].toString(); // 第一行和第一列全部为字符串，以防被识别为数据
       arr[i][j] = keepFewNum(arr[i][j], m);
     }
   }
@@ -40,7 +38,7 @@ export const keepFewNum = (value, m) => {
     const index = value.toString().indexOf('.') + 1; //小数点的位置
     const num = value.toString().length - index; //小数的位数
     if (index && num > m) {
-      value = value.toFixed(m);
+      value = parseFloat(value.toFixed(m));
     }
   }
   return value;

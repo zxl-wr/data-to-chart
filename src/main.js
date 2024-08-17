@@ -1,12 +1,12 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import { router } from './routers';
 import App from './App.vue';
-import router from './router/index.js';
-import { createPinia } from 'pinia'; // pinia 全局状态管理，代替 vuex
-import 'virtual:svg-icons-register'; // svg 雪碧图
+import 'uno.css';
 
-const app = createApp(App);
 const pinia = createPinia();
+const app = createApp(App);
 
-app.use(router);
 app.use(pinia);
+app.use(router);
 app.mount('#app');

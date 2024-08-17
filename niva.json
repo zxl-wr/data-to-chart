@@ -1,7 +1,7 @@
 {
-  "name": "data-to-chart",
-  "uuid": "8ec66865-9a3e-4e01-9b30-7c8a654e3c3c",
-  "icon": "charts.png",
+  "name": "scatter-charts",
+  "uuid": "72875938-27f7-4820-9989-8917428d1796",
+  "icon": "scatter.png",
   "debug": {
     "entry": "http://localhost:5173",
     "resource": "public"
@@ -10,7 +10,10 @@
     "resource": "dist"
   },
   "window": {
-    "icon": "charts.png",
-    "minSize": { "width": 1280, "height": 820 }
+    "title": "质谱分子水平表征可视化数据处理软件",
+    "icon": "scatter.png",
+    "size": { "width": 576, "height": 324 },
+    "resizable": false,
+    "decorations": false
   }
 }
